@@ -1,0 +1,70 @@
+body{
+    background-image: url('bg.jpg');
+    margin: 0px;
+    text-align: center;
+}
+
+.title{
+    height: 200px;
+    background-color: rgb(255, 221, 183);
+}
+
+h1{
+    padding-top: 45px;
+    font-size: 80px;
+    font-family: fantasy;
+    color:rgb(230, 138, 0)
+}
+
+.emoji{
+    width: 40px;
+    height: 40px;
+    margin: 25px;
+}
+
+
+
+table{
+    background-color: rgb(255, 221, 183);
+    border-color:  rgb(255, 187, 86);
+    border-width: 3px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cell{
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    font-size: 1.5em; 
+    border-width: 3px;
+    border-color: rgb(255, 187, 86);
+}
+
+.cell:hover{
+    background-color: rgb(253, 176, 61);
+    cursor: pointer;
+}
+
+.clicked{
+    background-color: blue;
+}
+
+.levelButton{
+    margin-left: 25px;
+    margin-top:30px;
+   width: 100px;
+   height: 50px;
+   background-color: rgb(255, 180, 82);
+   border-color: rgb(255, 184, 32);
+   border-width: 4px;
+   border-radius: 25px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.levelbutton:hover {
+   background-color:rgb(255, 161, 37) ;
+   cursor: pointer;
+}
