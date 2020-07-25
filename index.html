@@ -7,19 +7,24 @@
 </head>
 
 <body onload="initGame()">
-   
-    <div class="title"> 
-     <h1>MINESWEEPER</h1>
+
+    <div class="title">
+        <h1>MINESWEEPER</h1>
     </div>
-   
-   <button class="emoji">😀</button>
-   <div class="timerGame"> </div>
-   
+
+    <button class="emoji">😀</button>
+
+        <div class="hints">
+            <span>💡</span>
+            <span>💡</span>
+            <span>💡</span>
+        </div>
+
     <table border="1" class="board">
         <tbody class="board-cells">
         </tbody>
     </table>
-  
+
     <div class="levelButtons">
         <button class="levelButton" onclick="changeLevel('BEGINNER')">BEGINNER</button>
         <button class="levelButton" onclick="changeLevel('MEDIUM')">MEDIUM</button>
@@ -30,7 +35,13 @@
     <div class="gameOverModal">
         <h2>GAME OVER!</h2>
         <button onclick="initGame()">restart</button>
-     </div>
+    </div>
+
+    <div class="winModal">
+        <h2>WINNER!!!!!!</h2>
+        <button onclick="initGame()">restart</button>
+    </div>
+
 
     <script src="js/game.js"></script>
     <script src="js/util.js"></script>

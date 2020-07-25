@@ -5,7 +5,9 @@ var NORMAL = '😀';
 var LOSE = '🤯';
 var WIN = '😎';
 var FLAG = '🚩';
+
 var gBoard;
+var cellClickedCount = 0;
 
 var gLevel = {
     size: 4,
@@ -16,9 +18,10 @@ var gLevel = {
 function initGame() {
     gBoard = buildBoard();
     console.table(gBoard)
-    // addMines(gBoard)
     renderBoard(gBoard)
     closeGameOverModal()
+    var elEmoji = document.querySelector('.emoji')
+    elEmoji.innerText = NORMAL;
 }
 
 
@@ -77,7 +80,6 @@ function renderBoard(board) {
         for (var j = 0; j < board[0].length; j++) {
             var cell = board[i][j];
             var className = `cell-${i}-${j}`;
-            // if (cell.isMine) cell.minesAroundCount = MINE;
             strHTML += `<td class="cell ${className}" onclick="cellClicked(this,${i}, ${j})" oncontextmenu="cellMarked(this,${i}, ${j})"></td>`
         }
         strHTML += `</tr>`
@@ -108,10 +110,20 @@ function setMinesNegsCount(cellI, cellJ, board) {
 }
 
 function cellClicked(elCell, i, j) {
+    cellClickedCount++;
+    // if (cellClickedCount === (gLevel.size ** 2) - (gLevel.size - 2)) {
+    //     openWinModal();
+    //     var elEmoji = document.querySelector('.emoji')
+    //     elEmoji.innerText = WIN;
+    // }
     var currCell = gBoard[i][j];
     currCell.isShown = true;
     // if (currCell.isMine) elCell.innerText = MINE;
-    if (currCell.isMine) openGameOverModal();
+    if (currCell.isMine) {
+        openGameOverModal();
+        var elEmoji = document.querySelector('.emoji')
+        elEmoji.innerText = LOSE;
+    }
     if (currCell.minesAroundCount == 0) elCell.style.backgroundColor = 'rgb(253, 187, 110';
     if (!currCell.isMine) {
         if (currCell.minesAroundCount == 1) elCell.innerText = '1';
@@ -125,20 +137,30 @@ function cellClicked(elCell, i, j) {
     }
 }
 
-function cellMarked(elCell, i, j){
+function cellMarked(elCell, i, j) {
     var currCell = gBoard[i][j];
     currCell.isMarked = true;
     elCell.innerText = FLAG;
 }
 
-function openGameOverModal(){
+function openGameOverModal() {
     var elGameOverModal = document.querySelector('.gameOverModal');
     elGameOverModal.style.display = 'block';
 }
 
-function closeGameOverModal(){
+function closeGameOverModal() {
     var elGameOverModal = document.querySelector('.gameOverModal');
-    elGameOverModal .style.display = 'none';
+    elGameOverModal.style.display = 'none';
+}
+
+function openWinModal() {
+    var elWinModal = document.querySelector('.winModal');
+    elWinModal.style.display = 'block';
+}
+
+function closeWinModal() {
+    var elWinModal = document.querySelector('.winModal');
+    elWinModal.style.display = 'none';
 }
 
 // function addMines(board) {
